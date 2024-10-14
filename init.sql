@@ -18,3 +18,4 @@ INSERT INTO alumnos (nombre, apellido, edad) VALUES
                                                  ('Sofía', 'Díaz', 23),
                                                  ('Diego', 'Torres', 20),
                                                  ('Valentina', 'Ruiz', 22);
+

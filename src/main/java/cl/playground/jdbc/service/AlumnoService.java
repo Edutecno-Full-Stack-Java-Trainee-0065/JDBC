@@ -12,4 +12,5 @@ public interface AlumnoService {
     void registrarAlumno(AlumnoCreateDTO alumno);
     Optional<AlumnoResponseDTO> buscarAlumnoPorId(Long id);
     void actualizarAlumno(AlumnoUpdateDTO alumnoUpdateDTO);
+    void eliminarAlumnoId(Long id);
 }

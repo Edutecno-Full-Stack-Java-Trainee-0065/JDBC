@@ -10,4 +10,5 @@ public interface AlumnoRepository {
     void insertarAlumno(Alumno alumno);
     Optional<Alumno> buscarAlumno(Long id);
     void actualizarAlumno(Alumno alumno);
+    void eliminarAlumno(Long id);
 }
