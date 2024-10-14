@@ -58,6 +58,12 @@ public class AlumnoServiceImpl implements AlumnoService {
         }
     }
 
+    @Override
+    public void eliminarAlumnoId(Long id) {
+        //FALTA CONTEMPLAR UN BOTON DE VALIDACION ANTES DE ELIMINAR
+        alumnoRepository.eliminarAlumno(id);
+    }
+
 
     private AlumnoResponseDTO convertToResponseDTO(Alumno alumno) {
         return new AlumnoResponseDTO(

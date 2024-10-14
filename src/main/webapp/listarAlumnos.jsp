@@ -21,6 +21,7 @@
             <th>Apellido</th>
             <th>Edad</th>
             <th>Acciones</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,12 @@
             <td><%= alumno.getEdad() %></td>
             <td>
                 <a href="${pageContext.request.contextPath}/actualizarAlumno?id=<%= alumno.getId() %>" class="btn btn-primary">Editar</a>
+            </td>
+            <td>
+                <form action="${pageContext.request.contextPath}/eliminarAlumno" method="post" style="display: inline;">
+                    <input type="hidden" name="id" value="<%= alumno.getId() %>">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este alumno?')">Eliminar</button>
+                </form>
             </td>
         </tr>
         <%

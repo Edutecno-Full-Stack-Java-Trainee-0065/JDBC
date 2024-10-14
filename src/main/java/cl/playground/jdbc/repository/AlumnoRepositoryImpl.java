@@ -19,7 +19,7 @@ public class AlumnoRepositoryImpl implements AlumnoRepository {
     @Override
     public List<Alumno> listarAlumnos() {
         List<Alumno> alumnos = new ArrayList<>();
-        String sql = "SELECT id, nombre, apellido, edad FROM alumnos";
+        String sql = "SELECT id, nombre, apellido, edad FROM alumnos ORDER BY id";
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql);
@@ -87,7 +87,7 @@ public class AlumnoRepositoryImpl implements AlumnoRepository {
         String sql = "UPDATE alumnos SET nombre = ?, apellido = ?, edad = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(sql)
+             PreparedStatement pstm = conn.prepareStatement(sql)
         ) {
 
             pstm.setString(1, alumno.getNombre());
@@ -98,6 +98,21 @@ public class AlumnoRepositoryImpl implements AlumnoRepository {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error al actualizar el alumno", e);
+        }
+    }
+
+    @Override
+    public void eliminarAlumno(Long id) {
+        String sql = "DELETE FROM alumnos WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement pstm = connection.prepareStatement(sql)
+        ) {
+            pstm.setLong(1, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("No es posible eliminar alumno", e);
         }
     }
 }
