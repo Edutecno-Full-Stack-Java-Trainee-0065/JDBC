@@ -99,7 +99,5 @@ public class AlumnoRepositoryImpl implements AlumnoRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Error al actualizar el alumno", e);
         }
-
     }
-
 }

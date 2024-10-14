@@ -8,6 +8,7 @@ import cl.playground.jdbc.repository.AlumnoRepository;
 import cl.playground.jdbc.repository.AlumnoRepositoryImpl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class AlumnoServiceImpl implements AlumnoService {
@@ -35,6 +36,27 @@ public class AlumnoServiceImpl implements AlumnoService {
         alumnoRepository.insertarAlumno(alumno);
     }
 
+    @Override
+    public Optional<AlumnoResponseDTO> buscarAlumnoPorId(Long id) {
+        return alumnoRepository.buscarAlumno(id)
+                .map(this::convertToResponseDTO);
+    }
+
+    @Override
+    public void actualizarAlumno(AlumnoUpdateDTO alumnoUpdateDTO) {
+        Optional<Alumno> alumnoOptional = alumnoRepository.buscarAlumno(alumnoUpdateDTO.getId());
+
+        if (alumnoOptional.isPresent()) {
+            Alumno alumno = alumnoOptional.get(); // El Alumno que esta en la base de datos
+            alumno.setNombre(alumnoUpdateDTO.getNombre());
+            alumno.setApellido(alumnoUpdateDTO.getApellido());
+            alumno.setEdad(alumnoUpdateDTO.getEdad());
+            alumnoRepository.actualizarAlumno(alumno);
+
+        } else {
+            throw new RuntimeException("Alumno no encontrado");
+        }
+    }
 
 
     private AlumnoResponseDTO convertToResponseDTO(Alumno alumno) {

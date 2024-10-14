@@ -20,6 +20,7 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Edad</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@
             <td><%= alumno.getNombre() %></td>
             <td><%= alumno.getApellido() %></td>
             <td><%= alumno.getEdad() %></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/actualizarAlumno?id=<%= alumno.getId() %>" class="btn btn-primary">Editar</a>
+            </td>
         </tr>
         <%
                 }

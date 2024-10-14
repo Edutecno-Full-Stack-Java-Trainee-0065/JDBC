@@ -1,7 +1,6 @@
 package cl.playground.jdbc.servlet;
 
 import cl.playground.jdbc.dto.AlumnoResponseDTO;
-import cl.playground.jdbc.model.Alumno;
 import cl.playground.jdbc.service.AlumnoService;
 import cl.playground.jdbc.service.AlumnoServiceImpl;
 import jakarta.servlet.ServletException;
