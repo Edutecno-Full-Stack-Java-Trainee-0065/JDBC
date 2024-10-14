@@ -1,5 +1,6 @@
 package cl.playground.jdbc.servlet;
 
+import cl.playground.jdbc.dto.AlumnoResponseDTO;
 import cl.playground.jdbc.model.Alumno;
 import cl.playground.jdbc.service.AlumnoService;
 import cl.playground.jdbc.service.AlumnoServiceImpl;
@@ -19,13 +20,13 @@ public class ListarAlumnosServlet extends HttpServlet {
 
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         alumnoService = new AlumnoServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Alumno> alumnos = alumnoService.listarAlumnos();
+        List<AlumnoResponseDTO> alumnos = alumnoService.listarAlumnos();
 
         req.setAttribute("alumnos", alumnos);
         req.getRequestDispatcher("listarAlumnos.jsp").forward(req, resp);

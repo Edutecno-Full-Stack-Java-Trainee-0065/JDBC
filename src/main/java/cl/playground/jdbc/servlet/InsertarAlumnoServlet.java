@@ -1,6 +1,6 @@
 package cl.playground.jdbc.servlet;
 
-import cl.playground.jdbc.model.Alumno;
+import cl.playground.jdbc.dto.AlumnoCreateDTO;
 import cl.playground.jdbc.service.AlumnoService;
 import cl.playground.jdbc.service.AlumnoServiceImpl;
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ public class InsertarAlumnoServlet extends HttpServlet {
     private AlumnoService alumnoService;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         alumnoService = new AlumnoServiceImpl();
     }
 
@@ -32,7 +32,7 @@ public class InsertarAlumnoServlet extends HttpServlet {
         String apellido = req.getParameter("apellido");
         int edad = Integer.parseInt(req.getParameter("edad"));
 
-        Alumno alumno = new Alumno(nombre, apellido, edad);
+        AlumnoCreateDTO alumno = new AlumnoCreateDTO(nombre, apellido, edad);
         alumnoService.registrarAlumno(alumno);
 
         resp.sendRedirect(req.getContextPath() + "/alumnos");

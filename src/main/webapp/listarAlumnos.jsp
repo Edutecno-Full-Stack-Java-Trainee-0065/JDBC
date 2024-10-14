@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="cl.playground.jdbc.model.Alumno" %>
+<%@ page import="cl.playground.jdbc.dto.AlumnoResponseDTO" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,9 +24,9 @@
         </thead>
         <tbody>
         <%
-            List<Alumno> alumnos = (List<Alumno>) request.getAttribute("alumnos");
+            List<AlumnoResponseDTO> alumnos = (List<AlumnoResponseDTO>) request.getAttribute("alumnos");
             if (alumnos != null) {
-                for (Alumno alumno : alumnos) {
+                for (AlumnoResponseDTO alumno : alumnos) {
         %>
         <tr>
             <td><%= alumno.getNombre() %></td>

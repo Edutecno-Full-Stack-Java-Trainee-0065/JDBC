@@ -1,15 +1,15 @@
-package cl.playground.jdbc.model;
+package cl.playground.jdbc.dto;
 
-public class Alumno {
+public class AlumnoResponseDTO {
     private Long id;
     private String nombre;
     private String apellido;
     private int edad;
 
-    public Alumno() {
+    public AlumnoResponseDTO() {
     }
 
-    public Alumno(Long id, String nombre, String apellido, int edad) {
+    public AlumnoResponseDTO(Long id, String nombre, String apellido, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -50,7 +50,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" +
+        return "AlumnoResponseDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
