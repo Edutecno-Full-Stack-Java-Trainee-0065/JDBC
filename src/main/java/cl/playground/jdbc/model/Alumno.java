@@ -1,9 +1,22 @@
 package cl.playground.jdbc.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table( name = "alumnos")
 public class Alumno {
+
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
+
+    @Column(name = "edad")
     private int edad;
 
     public Alumno() {

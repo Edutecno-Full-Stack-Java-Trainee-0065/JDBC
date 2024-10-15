@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> <!-- DRIVER DE BASE DE DATOS -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/myapp</property> <!-- DIRECCION DE LA BASE DE DATOS -->
+        <property name="hibernate.connection.username">postgres</property> <!-- NOMBRE DE USUARIO DE LA BASE DE DATOS -->
+        <property name="hibernate.connection.password">password</property> <!-- CONTRASEÑA DE NUESTRA BASE DE DATOS (EN CASI TODOS LOS CASOS ES PASSWORD) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DIALECTO UTILIZADO -->
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property> <!-- PROPIEDAD QUE NOS MUESTRA LAS CONSULTAS SQL EN LA CONSOLA -->
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property> <!-- TIPO DE GENERACION DE TABLAS EN LA BASE DE DATOS -->
+
+        <!-- Names the annotated entity class -->
+        <mapping class="cl.playground.jdbc.model.Alumno"/> <!-- DIRECCION DE LA CLASE A MAPEAR -->
+    </session-factory>
+</hibernate-configuration>

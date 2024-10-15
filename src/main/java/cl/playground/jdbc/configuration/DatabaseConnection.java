@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
+    /*
     // ATRIBUTOS CON CREDENCIALES DE CONEXION A LA BD POSTGRES
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/myapp";
     private static final String DB_USER = "postgres";
@@ -51,4 +52,6 @@ public class DatabaseConnection {
             }
         }
     }
+    */
+
 }
