@@ -48,7 +48,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
-
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>

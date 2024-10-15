@@ -21,16 +21,22 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public List<AlumnoResponseDTO> listarAlumnos() {
-        return alumnoRepository.listarAlumnos().stream()
+        List<Alumno> alumnos = alumnoRepository.listarAlumnos();
+        if (alumnos.isEmpty()) {
+            throw new RuntimeException("No se encontraron alumnos");
+        }
+        return alumnos.stream()
                 .map(this::convertToResponseDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public void registrarAlumno(AlumnoCreateDTO alumnoDTO) {
+        validarAlumnoCreate(alumnoDTO);
+
         Alumno alumno = new Alumno();
-        alumno.setNombre(alumnoDTO.getNombre());
-        alumno.setApellido(alumnoDTO.getApellido());
+        alumno.setNombre(alumnoDTO.getNombre().trim());
+        alumno.setApellido(alumnoDTO.getApellido().trim());
         alumno.setEdad(alumnoDTO.getEdad());
 
         alumnoRepository.insertarAlumno(alumno);
@@ -72,5 +78,21 @@ public class AlumnoServiceImpl implements AlumnoService {
                 alumno.getApellido(),
                 alumno.getEdad()
         );
+    }
+
+    private void validarAlumnoCreate(AlumnoCreateDTO alumnoDTO) {
+        if (alumnoDTO == null) {
+            throw new RuntimeException("Alumno no puede ser nulo");
+        }
+        if (alumnoDTO.getNombre() == null || alumnoDTO.getNombre().trim().isEmpty()) {
+            throw new RuntimeException("El nombre del alumno no puede estar vacio");
+        }
+        if (alumnoDTO.getApellido() == null || alumnoDTO.getApellido().trim().isEmpty()) {
+            throw new RuntimeException("El apellido del alumno no puede estar vacio");
+        }
+        if (alumnoDTO.getEdad() < 0 || alumnoDTO.getEdad() > 120) {
+            throw new RuntimeException("La edad del alumno debe estar entre 0 y 120");
+        }
+
     }
 }
