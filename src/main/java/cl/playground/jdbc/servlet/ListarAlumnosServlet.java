@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
 @WebServlet(name = "ListarAlumnosServlet", value = "/alumnos")
 public class ListarAlumnosServlet extends HttpServlet {
 
@@ -24,7 +25,7 @@ public class ListarAlumnosServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IOException {
         List<AlumnoResponseDTO> alumnos = alumnoService.listarAlumnos();
 
         req.setAttribute("alumnos", alumnos);
