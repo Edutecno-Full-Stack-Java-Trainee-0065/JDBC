@@ -14,7 +14,7 @@
         <property name="show_sql">true</property> <!-- PROPIEDAD QUE NOS MUESTRA LAS CONSULTAS SQL EN LA CONSOLA -->
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property> <!-- TIPO DE GENERACION DE TABLAS EN LA BASE DE DATOS -->
+        <property name="hbm2ddl.auto">create-drop</property> <!-- TIPO DE GENERACION DE TABLAS EN LA BASE DE DATOS -->
 
         <!-- Names the annotated entity class -->
         <mapping class="cl.playground.jdbc.model.Alumno"/> <!-- DIRECCION DE LA CLASE A MAPEAR -->

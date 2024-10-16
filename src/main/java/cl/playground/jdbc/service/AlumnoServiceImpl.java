@@ -22,9 +22,9 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Override
     public List<AlumnoResponseDTO> listarAlumnos() {
         List<Alumno> alumnos = alumnoRepository.listarAlumnos();
-        if (alumnos.isEmpty()) {
+        /*if (alumnos.isEmpty()) {
             throw new RuntimeException("No se encontraron alumnos");
-        }
+        }*/
         return alumnos.stream()
                 .map(this::convertToResponseDTO)
                 .collect(Collectors.toList());
